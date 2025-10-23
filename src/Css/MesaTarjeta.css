@@ -1,0 +1,80 @@
+.cartaContenedor{
+    width: 250px;
+    border-radius: 18px;
+    box-shadow: 2px 0.5px 5px black;
+    
+}
+.estadoLibreContenedor{
+    width: 250px;
+    height: 100px;
+    background-color: #388E3C;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.estadoOcupadoContenedor{
+    width: 250px;
+    height: 100px;
+    background-color: #b22222;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.estadoContenedor-numero{
+    margin: 0 auto;
+    font-size: 5rem;
+    font-weight: 950;
+    opacity: 0.6;
+}
+.titulo{
+    padding: 0;
+    margin: 10px 10px;
+    text-align: center;
+    font-weight: 200;
+    color: #333333;
+}
+.contenedorBoton{
+    display: flex;
+    justify-content: center;
+}
+.botonLibre{
+    width: 50%;
+    margin: 0 10px 10px;
+    padding: 8px 0;
+    border: 2px solid;
+    background-color:#f8f9fa;
+    color: #28a745;
+    border-radius: 10px;
+    border-color: #28a745;
+}
+.botonLibre:hover{
+    background-color: #28a745;
+    color: white;
+    overlay: none;
+    border-color: #28a745;
+}
+.botonOcupado{
+    width: 50%;
+    margin: 0 10px 10px;
+    padding: 8px 0;
+    border: 2px solid;
+    background-color:#f8f9fa;
+    color: #b22222;
+    border-radius: 10px;
+    border-color: #b22222;
+}
+.botonOcupado:hover{
+    background-color: #b22222;
+    color: white;
+    overlay: none;
+    border-color: #b22222;
+}
+.cartaContenedor{
+    background-color: #f8f9fa;
+}

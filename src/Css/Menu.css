@@ -1,0 +1,352 @@
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 600,
+  'GRAD' 0,
+  'opsz' 0;
+}
+
+.contenedor-menu-cerrado{
+    height: 100vh;
+    background-color: #1c1632;
+    justify-content: center;
+    flex-direction: column;
+    position: sticky;
+    left: 0;
+    animation: .4s ease-in-out both animacionCerrar;
+}
+@keyframes animacionCerrar {
+    from{
+        width: 250px;
+    }
+    to{
+        width: 80px;
+    }
+}
+.contenedor-menu-opciones-lista-boton-cerrado{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    color: #b9b6c9;
+    border: none;
+    border-radius: 8px;
+    animation: 0.5s ease-out both animacionEntradaCerrado;
+}
+@keyframes animacionEntradaCerrado {
+    from{
+        top:100px;
+        transform: rotate(80deg);
+    }
+    to{
+        top: 145px;
+        transform: rotate(0);
+    }
+}
+.contenedor-menu-opciones-lista-boton-cerrado:hover{
+    color: white;
+    scale: 1.1;
+    cursor: pointer;
+    background-color: #241d3f;
+}
+.contenedor-menu-opciones-lista-opcion-span{
+    width: 0;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.contenedor-menu-abierto{
+    display: flex;
+    height: 100vh;
+    background-color: #1c1632;
+    width: 15rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: -15px;
+    position: sticky;
+    left: 0;
+    animation: .4s ease-in-out both animacionAbrir;
+}
+@keyframes animacionAbrir {
+    from{
+        width: 80px;
+    }
+    to{
+        width: 250px;
+    }
+}
+.contenedor-menu-opciones-lista-boton-abierto{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    color: #b9b6c9;
+    border: none;
+    border-radius: 8px;
+    animation: 0.5s ease-out both animacionEntrada;
+}
+@keyframes animacionEntrada {
+    from{
+        top: 30px;
+        right: 20px;
+        transform: rotate(80deg)
+    }
+    to{
+        top: 12px;
+        right: 10px;
+        transform: rotate(0);
+    }
+}
+.contenedor-menu-opciones-lista-boton-abierto:hover{
+    color: white;
+    scale: 1.1;
+    cursor: pointer;
+    background-color: #241d3f;
+}
+.contenedor-menu-abierto .contenedor-menu-opciones-lista-opcion-span{
+    width: auto;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+}
+.contenedor-menu-titulo{
+    margin: 1rem 0;
+    text-align: center;
+    color: #ffffff;
+}
+.contenedor-menu-usuario-cerrado{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+    border-top: 1px solid rgb(87, 87, 87);
+    color: #ffffff;
+}
+.contenedor-menu-usuario-cerrado span{
+    width: 0;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.contenedor-menu-usuario-abierto{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 1rem 0;
+    border-top: 1px solid rgb(87, 87, 87);
+    color: #ffffff;
+}
+.contenedor-menu-usuario-abierto span{
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.contenedor-menu-usuario-img{
+    width: 40px;
+    height: 40px;
+}
+.contenedor-menu-opciones{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 78%;
+}
+.contenedor-menu-opciones-lista-cerrado{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid rgb(87, 87, 87);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    animation: 0.5s ease-in-out both animacionListaEntrada;
+}
+@keyframes animacionListaEntrada {
+    from{
+        padding-top: 20px;
+    }
+    to{
+        padding-top: 60px;
+    }
+}
+.contenedor-menu-opciones-lista-abierto{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid rgb(87, 87, 87);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    animation: 0.5s ease-in-out both animacionListaSalida;
+}
+@keyframes animacionListaSalida {
+    from{
+        padding-top: 60px;
+    }
+    to{
+        padding-top: 20px;
+    }
+}
+
+.contenedor-menu-opciones-lista-opcion-abierto{
+    margin:0;
+    text-decoration: none;
+    color: #b9b6c9;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 15px;
+    height: 40px;
+    width: 150px;
+    padding: 0 2rem;
+    border-radius: 8px;
+}
+.contenedor-menu-opciones-lista-opcion-cerrado{
+    margin:0;
+    text-decoration: none;
+    color: #b9b6c9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    
+}
+.contenedor-menu-opciones-lista-opcion-info{
+    position: absolute;
+    left: 80px;
+    background-color: #1c1632;
+    height: 40px;
+    align-content: center;
+    padding: 0 1rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+.contenedor-menu-opciones-lista-opcion-cerrado:hover .contenedor-menu-opciones-lista-opcion-info{
+    opacity: 1;
+    visibility: visible;
+}
+.contenedor-menu-opciones-lista-opcion-cerrado:hover{
+    background-color: #241d3f;
+    cursor: pointer;
+}
+
+.contenedor-menu-opciones-lista-opcion-abierto span{
+    padding-right: 0;
+    cursor: pointer;
+}
+.contenedor-menu-opciones-lista-opcion-abierto:hover{
+    background-color: #241d3f;
+    cursor: pointer;
+}
+
+.contenedor-menu-opciones-lista-opcion-abierto:hover span{
+    color: #ffffff;
+    cursor: pointer;
+    scale: 1.1;
+}
+.contenedor-menu-opciones-lista-opcion-cerrado:hover span{
+    color: #ffffff;
+    cursor: pointer;
+    scale: 1.1;
+}
+.contenedorBotonSalir{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+.contenedor-menu-opciones-boton-cerrado{
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    background-color: transparent;
+    color: #b9b6c9;
+}
+.contenedor-menu-opciones-boton-info{
+    position: absolute;
+    left: 80px;
+    background-color: #1c1632;
+    height: 40px;
+    align-content: center;
+    padding: 0 1rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+.contenedor-menu-opciones-boton-cerrado:hover .contenedor-menu-opciones-boton-info{
+    opacity: 1;
+    visibility: visible;
+}
+.contenedor-menu-opciones-boton-cerrado .contenedor-menu-opciones-boton-span{
+    width: 0;
+    visibility: hidden;
+    opacity: 0;
+}
+.contenedor-menu-opciones-boton-cerrado:hover{
+    background-color: #241d3f;
+    cursor: pointer;
+}
+.contenedor-menu-opciones-boton-cerrado:hover span{
+    color: #ffffff;
+    cursor: pointer;
+    scale: 1.1;
+}
+.contenedor-menu-opciones-boton:hover{
+    color: #fff;
+    background-color: #241d3f;
+}
+.contenedor-menu-opciones-boton-abierto{
+    display: flex;
+    box-sizing: content-box;
+    width: 150px;
+    height: 40px;
+    padding: 0 2rem;
+    justify-content: start;
+    align-items: center;
+    gap: 15px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    background-color: transparent;
+    color: #b9b6c9;
+    border:none;
+    border-radius: 8px;
+}
+.contenedor-menu-opciones-boton-abierto:hover{
+    background-color: #241d3f;
+    border: 8px;
+    cursor: pointer;
+}
+.contenedor-menu-opciones-boton-abierto:hover span{
+    color: #ffffff;
+    cursor: pointer;
+    scale: 1.1;
+}
