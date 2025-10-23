@@ -36,6 +36,13 @@
     border: none;
     border-radius: 8px;
     animation: 0.5s ease-out both animacionEntradaCerrado;
+
+    &:hover{
+        color: white;
+        scale: 1.1;
+        cursor: pointer;
+        background-color: #241d3f;
+    }
 }
 @keyframes animacionEntradaCerrado {
     from{
@@ -47,12 +54,7 @@
         transform: rotate(0);
     }
 }
-.contenedor-menu-opciones-lista-boton-cerrado:hover{
-    color: white;
-    scale: 1.1;
-    cursor: pointer;
-    background-color: #241d3f;
-}
+
 .contenedor-menu-opciones-lista-opcion-span{
     width: 0;
     pointer-events: none;
@@ -71,6 +73,14 @@
     position: sticky;
     left: 0;
     animation: .4s ease-in-out both animacionAbrir;
+
+    & .contenedor-menu-opciones-lista-opcion-span{
+    width: auto;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+}
 }
 @keyframes animacionAbrir {
     from{
@@ -92,6 +102,13 @@
     border: none;
     border-radius: 8px;
     animation: 0.5s ease-out both animacionEntrada;
+
+    &:hover{
+        color: white;
+        scale: 1.1;
+        cursor: pointer;
+        background-color: #241d3f;
+    }
 }
 @keyframes animacionEntrada {
     from{
@@ -105,19 +122,8 @@
         transform: rotate(0);
     }
 }
-.contenedor-menu-opciones-lista-boton-abierto:hover{
-    color: white;
-    scale: 1.1;
-    cursor: pointer;
-    background-color: #241d3f;
-}
-.contenedor-menu-abierto .contenedor-menu-opciones-lista-opcion-span{
-    width: auto;
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
 
-}
+
 .contenedor-menu-titulo{
     margin: 1rem 0;
     text-align: center;
@@ -131,14 +137,15 @@
     padding: 1rem 0;
     border-top: 1px solid rgb(87, 87, 87);
     color: #ffffff;
+    & span{
+        width: 0;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
 }
-.contenedor-menu-usuario-cerrado span{
-    width: 0;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-}
+
 .contenedor-menu-usuario-abierto{
     display: flex;
     align-items: center;
@@ -148,12 +155,13 @@
     padding: 1rem 0;
     border-top: 1px solid rgb(87, 87, 87);
     color: #ffffff;
+    & span{
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
 }
-.contenedor-menu-usuario-abierto span{
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-}
+
 
 .contenedor-menu-usuario-img{
     width: 40px;
@@ -216,6 +224,54 @@
     width: 150px;
     padding: 0 2rem;
     border-radius: 8px;
+
+    &:hover{
+        background-color: #241d3f;
+        cursor: pointer;
+    }
+    &:hover span{
+    color: #ffffff;
+    cursor: pointer;
+    scale: 1.1;
+    }
+    
+    & span{
+        padding-right: 0;
+        cursor: pointer;
+    }
+
+}
+
+.selecionadoAbierto{
+    position: relative;
+    color: #000000;
+    &:hover{
+        color: #000000;
+        background-color: transparent;
+    }
+    &:hover span{
+        color: #000000;
+    }
+    &::after{
+        content: "";
+        position: absolute;
+        height: 40px;
+        z-index: -1;
+        background-color: #f5f5f5;
+        border-top-left-radius: 20px ;
+        border-bottom-left-radius: 20px;
+        animation: 0.5s ease-in-out both animacionSelecionadoAbierto;
+    }
+}
+@keyframes animacionSelecionadoAbierto {
+    from{
+        width: 10px;
+        left: 2px;
+    }
+    to{
+        left: 2px;
+        width: 230px;
+    }
 }
 .contenedor-menu-opciones-lista-opcion-cerrado{
     margin:0;
@@ -227,8 +283,62 @@
     width: 40px;
     height: 40px;
     border-radius: 8px;
-    
+
+    &:hover{
+        background-color: #241d3f;
+        cursor: pointer;
+    }   
+    &:hover span{
+    color: #ffffff;
+    cursor: pointer;
+    scale: 1.1;
+    }
+    &:hover .contenedor-menu-opciones-lista-opcion-info{
+        opacity: 1;
+        visibility: visible;
+    }
 }
+
+
+
+.selecionadoCerrado{
+    position: relative;
+    color: #000000;
+    &:hover{
+        color: #000000;
+        background-color: transparent;
+    }
+    &:hover span{
+        color: #000000;
+    }
+    &:hover .contenedor-menu-opciones-lista-opcion-info{
+        opacity: 0;
+        visibility: hidden;
+    }
+    &::after{
+        content: "";
+        position: absolute;
+        
+        height: 40px;
+        
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+        background-color: #f5f5f5;
+        z-index: -1;
+        animation: 0.5s ease-in-out both animacionSelecionadoCerrado;
+    }
+}
+@keyframes animacionSelecionadoCerrado {
+    from{
+        left: 2px;
+        width: 10px;
+    }
+    to{
+        left: 2px;
+        width: 60px;
+    }
+}
+
 .contenedor-menu-opciones-lista-opcion-info{
     position: absolute;
     left: 80px;
@@ -242,34 +352,7 @@
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
 }
-.contenedor-menu-opciones-lista-opcion-cerrado:hover .contenedor-menu-opciones-lista-opcion-info{
-    opacity: 1;
-    visibility: visible;
-}
-.contenedor-menu-opciones-lista-opcion-cerrado:hover{
-    background-color: #241d3f;
-    cursor: pointer;
-}
 
-.contenedor-menu-opciones-lista-opcion-abierto span{
-    padding-right: 0;
-    cursor: pointer;
-}
-.contenedor-menu-opciones-lista-opcion-abierto:hover{
-    background-color: #241d3f;
-    cursor: pointer;
-}
-
-.contenedor-menu-opciones-lista-opcion-abierto:hover span{
-    color: #ffffff;
-    cursor: pointer;
-    scale: 1.1;
-}
-.contenedor-menu-opciones-lista-opcion-cerrado:hover span{
-    color: #ffffff;
-    cursor: pointer;
-    scale: 1.1;
-}
 .contenedorBotonSalir{
     display: flex;
     justify-content: center;
@@ -288,6 +371,26 @@
     font-size: 16px;
     background-color: transparent;
     color: #b9b6c9;
+    border-radius: 8px;
+
+    &:hover .contenedor-menu-opciones-boton-info{
+        opacity: 1;
+        visibility: visible;
+    }
+    & .contenedor-menu-opciones-boton-span{
+        width: 0;
+        visibility: hidden;
+        opacity: 0;
+    }
+    &:hover{
+        background-color: #241d3f;
+        cursor: pointer;
+    }
+    &:hover span{
+        color: #ffffff;
+        cursor: pointer;
+        scale: 1.1;
+    }
 }
 .contenedor-menu-opciones-boton-info{
     position: absolute;
@@ -302,24 +405,7 @@
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
 }
-.contenedor-menu-opciones-boton-cerrado:hover .contenedor-menu-opciones-boton-info{
-    opacity: 1;
-    visibility: visible;
-}
-.contenedor-menu-opciones-boton-cerrado .contenedor-menu-opciones-boton-span{
-    width: 0;
-    visibility: hidden;
-    opacity: 0;
-}
-.contenedor-menu-opciones-boton-cerrado:hover{
-    background-color: #241d3f;
-    cursor: pointer;
-}
-.contenedor-menu-opciones-boton-cerrado:hover span{
-    color: #ffffff;
-    cursor: pointer;
-    scale: 1.1;
-}
+
 .contenedor-menu-opciones-boton:hover{
     color: #fff;
     background-color: #241d3f;

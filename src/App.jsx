@@ -7,7 +7,7 @@ function App() {
 
   return (
     <div style={{ display: "flex", height: "100vh", backgroundColor: "#f5f5f5", width: "100vw"}}>
-      <Menu selected={selectedSection} onSelect={setSelectedSection} />
+      <Menu selecionado={selectedSection} enSelecion={setSelectedSection} />
       <Contenedor section={selectedSection} />
     </div>
   );
