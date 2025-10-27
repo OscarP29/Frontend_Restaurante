@@ -1,9 +1,10 @@
 import Mesas from "../Paginas/Mesas";
 import Platos from "../Paginas/Platos"
+import "../Css/Contenedor.css"
 
 function Contenedor({ section }) {
   return (
-    <main style={{ flex: 1, padding: "0 0 1rem",  overflowY: "scroll", overflowX: "hidden" }}>
+    <main key={section}>
       {section === "mesas" && <Mesas />}
       {section === "platos" && <Platos />}
     </main>

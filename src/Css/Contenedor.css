@@ -1,0 +1,17 @@
+main{
+    flex: 1;
+    padding: 0 1rem;  
+    overflow-y: "scroll"; 
+    overflow-x:  "hidden";
+    animation: animacion 0.4s both ease-in-out;
+}
+@keyframes animacion {
+    from{
+        opacity: 0;
+        scale: 0.95;
+    }
+    to{
+        opacity: 1;
+        scale: 1;
+    }
+} 

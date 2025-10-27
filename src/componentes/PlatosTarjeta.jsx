@@ -1,10 +1,12 @@
 import "../Css/PlatosTarjetas.css"
-export default function PlatosTarjeta({nombre,des,precio}){
+export default function PlatosTarjeta(){
     return(
         <div className="contenedorAtender-platos">
-            <span className="contenedorAtender-platos-nombre">{nombre}</span>
-            <span className="contenedorAtender-platos-desc">{des}</span>
-            <span className="contenedorAtender-platos-precio">{precio}</span>  
+            <div className="contenedorAtender-platos-contenedor">
+                <h3 className="contenedorAtender-platos-nombre">Salchipapa</h3>
+                <p className="contenedorAtender-platos-desc">Salchicha, Papa, Salsa, lechuga</p>
+            </div>
+            <span className="contenedorAtender-platos-precio">$ 18.000</span>  
         </div>
     )
 }

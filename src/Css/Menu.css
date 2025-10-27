@@ -12,7 +12,7 @@
     background-color: #1c1632;
     justify-content: center;
     flex-direction: column;
-    position: sticky;
+    position: relative;
     left: 0;
     animation: .4s ease-in-out both animacionCerrar;
 }
@@ -283,7 +283,6 @@
     width: 40px;
     height: 40px;
     border-radius: 8px;
-
     &:hover{
         background-color: #241d3f;
         cursor: pointer;
@@ -304,6 +303,7 @@
 .selecionadoCerrado{
     position: relative;
     color: #000000;
+    z-index: 1;
     &:hover{
         color: #000000;
         background-color: transparent;
@@ -318,9 +318,7 @@
     &::after{
         content: "";
         position: absolute;
-        
         height: 40px;
-        
         border-top-left-radius: 20px;
         border-bottom-left-radius: 20px;
         background-color: #f5f5f5;
@@ -351,6 +349,7 @@
     transition: opacity 0.3s ease, visibility 0.3s ease;
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
+    z-index: 3;
 }
 
 .contenedorBotonSalir{

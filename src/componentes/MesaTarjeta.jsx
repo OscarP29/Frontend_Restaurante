@@ -1,18 +1,18 @@
 import "../Css/MesaTarjeta.css";
-export default function MesaTarjeta({numero, estado}) {
+export default function MesaTarjeta() {
     return(
-        <div className="cartaContenedor">
-            <div className={estado ? "estadoOcupadoContenedor" : "estadoLibreContenedor"}>
-                <span className="estadoContenedor-numero"> {numero} </span>
-            </div>
-            <div>
-                <h3 className="titulo">Mesa {numero}</h3>
-                <div className="contenedorBoton">
-                    <button className={estado ? "botonOcupado" : "botonLibre"}>
-                        {estado ? "Finalizar" : "Atender"}
-                    </button>
+        <article className="mesaContenedor">
+            <div className="contenedorEstado">
+                <div className="estadoLibre">
+                    <span className="material-symbols-outlined">check</span>
+                </div>
+                <div className="informacionMesa">
+                    <h3 className="nombreMesa">Mesa 1</h3>
+                    <span className="estadoMesa">Libre</span>
                 </div>
             </div>
-    </div>
+                <button className="botonLibre">Atender</button>
+        </article>
+        
     )
 }

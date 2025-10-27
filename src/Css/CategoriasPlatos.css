@@ -1,0 +1,21 @@
+.contenedorCategoria{
+    display: flex;
+    gap: 5px;
+    margin-bottom: 20px;
+    margin-left: 1rem;
+}
+.contenedorCategoria div{
+    width: 6px;
+    height: 26px;
+    background-color: #007000;
+    border-radius: 8px;
+}
+.tituloCategoria{
+    margin: 0;
+}
+.contenedorPlatos{
+    margin-left: 2rem;
+    display: flex;
+    gap: 20px;
+
+}

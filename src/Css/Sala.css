@@ -1,0 +1,20 @@
+.contenedorSala{
+    display: flex;
+    gap: 5px;
+    margin-bottom: 20px;
+    margin-left: 1rem;
+}
+.contenedorSala div{
+    width: 6px;
+    height: 26px;
+    background-color: #007000;
+    border-radius: 8px;
+}
+.tituloSala{
+    margin: 0;
+}
+.contenedorMesas{
+    margin-left: 2rem;
+    display: flex;
+    gap: 20px;
+}
