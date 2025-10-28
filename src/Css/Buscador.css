@@ -1,0 +1,25 @@
+.buscador{
+    display: flex;
+    gap: 8px;
+    position: relative;
+    margin-bottom: 20px;
+    width: 500px;
+}
+.buscador-text{
+    width: 350px;
+    height: 40px;
+    border-radius: 8px;
+    font-size: 18px;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    padding: 0;
+    padding-left: 50px;
+    border-style: solid;
+    border-radius: 16px;
+} 
+.buscador-text:focus{
+    border: 1px solid #ccc;
+    box-shadow: 0 5px 6px rgba(0, 133, 7, 0.1);
+    outline: none;
+}

@@ -1,0 +1,162 @@
+.contenedorTabla{
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 450px;
+    margin: 0 1rem;
+    border-radius: 1rem;
+    border: 1px solid #e5e7eb;
+    border-top: none; 
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+}
+
+.tabla{
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.9rem;
+    & thead {
+      background-color: #007000; 
+      color: white;
+      text-transform: uppercase;
+    }
+    & thead th{
+      position: sticky;
+      top: 0;
+      background-color: #007000;
+      color: white;
+      z-index: 1;
+    }
+    & th,
+    & td {
+      padding: 0.75rem 1rem;
+    }
+    & tbody tr {
+      border-bottom: 1px solid #e5e7eb;
+      background-color: white;
+      transition: background-color 0.2s ease;
+    }
+    & tbody tr:hover {
+      background-color: #e8f5e9;
+      transition: background-color 0.3s ease;
+    }
+    & tbody tr:hover td {
+      color: #1b5e20;
+    }
+
+    & tbody tr:hover td:nth-child(4) {
+      font-weight: 800;
+      color: #2e7d32;
+    }
+}
+
+
+.tituloAcciones {
+  text-align: center;
+}
+
+.acciones{
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 100%;
+}
+.accionBoton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #0bbe98; 
+  }
+}
+.EstadoPendiente{
+    background-color:rgb(255, 243, 205);
+    color:  rgb(133, 100, 4);
+    align-items: center;
+    text-align: center;
+    padding: 2px 5px;
+    border-radius: 18px;
+    margin: 0;
+}
+.EstadoCompletado{
+    background-color:rgb(177, 241, 241);
+    color:  rgb(26, 182, 202);
+    align-items: center;
+    text-align: center;
+    padding: 2px 5px;
+    border-radius: 18px;
+    margin: 0;
+}
+.Total{
+  font-weight: 600;
+}
+.botonVer{
+  position: relative;
+  height: 40px;
+  background-color: white;
+  color: #000070;
+  border: 2px solid #000070;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  transition: background-color 0.3s ease;
+  &:hover{
+    background-color: #000070;
+    color: white;
+    cursor: pointer;
+  }
+  &:hover::after{
+    position: absolute;
+    content: "Detalles";
+    background-color: #000070;
+   
+    padding: 5px 10px;
+    border-radius: 10px;
+    animation: 0.2s both ease-in-out aparecer;
+  }
+}
+
+.botonFinalizar{
+  height: 40px;
+  position: relative;
+  background-color: white;
+  color: #700000;
+  border: 2px solid #700000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  transition: background-color 0.3s ease;
+  &:hover{
+    background-color: #700000;
+    color: white;
+    cursor: pointer;
+  }
+  &:hover::after{
+    position: absolute;
+    content: "Finalizar";
+    background-color: #700000;
+   
+    padding: 5px 10px;
+    border-radius: 10px;
+    animation: 0.2s both ease-in-out aparecer;
+  }
+}
+@keyframes aparecer {
+    from{
+      opacity: 0;
+      top: 35px;
+    }
+    to{
+      opacity: 1;
+      top: 40px;
+    }
+  }
