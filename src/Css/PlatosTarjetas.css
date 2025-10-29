@@ -92,3 +92,18 @@
     scale: 0.9;
     background-color: rgb(62, 146, 62); 
 }
+
+/* Estilos de los boton rederizados por condicion */
+.contenedorBoton{
+    align-content: center;
+}
+.botonAñadir{
+    background-color: #007000;
+    border: none;
+    color: white;
+    border-radius: 50%;
+    padding: 5px;
+    &:hover{
+        cursor: pointer;
+    }
+}

@@ -40,7 +40,7 @@ export default function TablaDinamica({columnas,datos,acciones}){
                 </thead>
                 <tbody>
                 {datos.map((row, idx) => (
-            <tr key={idx} >
+            <tr key={idx}>
               {columnas.map((col) => (
                 <td key={col.key}>
                     <p className={col.className}>

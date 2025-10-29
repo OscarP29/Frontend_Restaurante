@@ -46,13 +46,18 @@
     & tbody tr:hover td {
       color: #1b5e20;
     }
-
     & tbody tr:hover td:nth-child(4) {
       font-weight: 800;
       color: #2e7d32;
     }
 }
-
+@keyframes xd {
+  from{
+    scale: 1.01;
+  }
+  to{
+    scale: 1;
+  }}
 
 .tituloAcciones {
   text-align: center;
@@ -144,6 +149,32 @@
     position: absolute;
     content: "Finalizar";
     background-color: #700000;
+   
+    padding: 5px 10px;
+    border-radius: 10px;
+    animation: 0.2s both ease-in-out aparecer;
+  }
+}
+.botonImprimir{
+  position: relative;
+  height: 40px;
+  background-color: white;
+  color: #000070;
+  border: 2px solid #000070;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  transition: background-color 0.3s ease;
+  &:hover{
+    background-color: #000070;
+    color: white;
+    cursor: pointer;
+  }
+  &:hover::after{
+    position: absolute;
+    content: "Imprimir";
+    background-color: #000070;
    
     padding: 5px 10px;
     border-radius: 10px;

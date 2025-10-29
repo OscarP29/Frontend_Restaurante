@@ -86,3 +86,108 @@
         color: white;
     }
 }
+
+/* Modal Diseño */
+
+.encabezadoModal{
+    display: flex;
+    gap: 3px;
+    & div{
+        width: 6px;
+        background-color: #007000;
+        border-radius: 8px;
+    }
+    & h3{
+        margin: 0;
+        font-size: 20px;
+    }
+}
+.navegadorModal{
+    margin: 1rem 0 1.5rem;
+    & ul{
+        display: flex;
+        gap: 10px;
+        list-style: none;
+        padding: 0 0 0 1rem;
+        margin: 0;
+    }
+    & ul li{
+        text-decoration: none;
+    }
+    & ul li:hover{
+        cursor: pointer;
+    }
+}
+.liSelecionado{
+    position: relative;
+    font-size: 16px;
+    &::after{
+        content: "";
+        position:absolute;
+        top: 20px;
+        left: 0px;
+        width: 45px;
+        height: 6px;
+        border-radius: 8px;
+        background-color: #007000;
+        animation: animacionLi 0.3s both ease-in-out;
+    }
+}
+@keyframes animacionLi {
+    from{
+        opacity: 0;
+    }
+    to{
+       opacity: 1;
+    }
+}
+.contenedorBotones{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+}
+.botonCerrarModal{
+    padding: 5px 10px;
+    border: 2px solid #007000;
+    border-radius: 16px;
+    background-color: white;
+    color: #007000;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    transition: 0.4s background-color ease-in-out;
+    &:hover{
+        background-color: #007000;
+        color: white;
+        scale: 1.02;
+        cursor: pointer;
+    }
+}
+.botonListoModal{
+    padding: 5px 10px;
+    border-radius: 16px;
+    background-color: #007000;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    transition: 0.4s background-color ease-in-out;
+    border: 2px solid #007000;
+    &:hover{
+        scale: 1.02;
+        cursor: pointer;
+    }
+}
+.contendorModal{
+    animation: animacionContenedor 0.2s both ease-in-out;
+}
+@keyframes animacionContenedor {
+    from{
+        opacity: 0;
+        scale: 0.9;
+    }
+    to{
+        opacity: 1;
+        scale: 1;
+    }
+}

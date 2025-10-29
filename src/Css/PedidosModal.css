@@ -1,0 +1,24 @@
+.contenedorPedidosModal{
+    display: flex;
+    gap: 60px;
+}
+.contenedorObservaciones{
+    width: 40%;
+}
+.encabezadoPedidosModal{
+    display: flex;
+    margin-bottom: 20px;
+    gap: 5px;
+    & div{
+        width: 6px;
+        background-color: #007000;
+        border-radius: 8px;
+    }
+    & h2{
+        margin: 0;
+    }
+}
+.textoObservaciones{
+    width: 80%;
+    height: 200px;
+}
