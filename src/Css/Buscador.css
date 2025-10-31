@@ -3,7 +3,20 @@
     gap: 8px;
     position: relative;
     margin-bottom: 20px;
-    width: 500px;
+    margin-left: 1rem;
+}
+.contenedorIcon{
+    display: flex;
+    position: absolute;
+    height: 42px;
+    width: 40px;
+    background-color: red;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: #007000;
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
 }
 .buscador-text{
     width: 350px;

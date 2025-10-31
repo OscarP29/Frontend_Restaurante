@@ -53,9 +53,9 @@ export default function Pedidos(){
             handlerName: "AbrirModal", className: "botonVer"
         },
         {
-            icon: <span className="material-symbols-outlined text-green-600">check_circle</span>,
-            onClick: (r) => console.log("Finalizar", r), className: "botonFinalizar"
-        },
+            icon: <span className="material-symbols-outlined text-gray-600">check_circle</span>,
+            handlerName: "finalizar", className: "botonFinalizar"
+        }
     ]
     
     return(

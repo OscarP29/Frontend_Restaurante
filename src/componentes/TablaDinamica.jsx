@@ -5,8 +5,10 @@ import { useState } from 'react';
 export default function TablaDinamica({columnas,datos,acciones}){
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [fila, setFila] = useState(null)
+    const [tipoModal, setModal] = useState()
 
     const AbrirModal = (filaSeleccionada) => {
+      setModal("Ver")
       setIsModalOpen(true);
       setFila(filaSeleccionada)
     }
@@ -14,9 +16,15 @@ export default function TablaDinamica({columnas,datos,acciones}){
       setFila(null)
       setIsModalOpen(false);
     }
+    const finalizar = (filaSeleccionada) => {
+      setModal("Finalizar")
+      setIsModalOpen(true);
+      setFila(filaSeleccionada)
+    }
     const FuncionesBotones = {
       AbrirModal,   
       CerrarModal,
+      finalizar,
     };
     const ReferenciasFunciones = (accionDescriptor, row) => {
     if (typeof accionDescriptor.onClick === "function") {
@@ -66,7 +74,7 @@ export default function TablaDinamica({columnas,datos,acciones}){
             </tbody>
             </table>
             <Modal abierto={isModalOpen} cerrado={CerrarModal}>
-              {fila ? (
+              {tipoModal === "Ver" && fila ? (
               <ul>
                 {Object.entries(fila).map(([clave, valor]) => (
                   <li key={clave}>
@@ -75,10 +83,26 @@ export default function TablaDinamica({columnas,datos,acciones}){
                   </li>
                 ))}
               </ul>
-            ) : (
-              <p>No hay datos</p>
-            )}
-              <button onClick={CerrarModal}>ADIOS</button>
+            ) : (null)}
+            {tipoModal === "Finalizar" && 
+              <>
+              <div className="encabezadoModal">
+              <div>
+                  <div className="divDecoracion"></div>
+                  <h3>Mesa 1</h3>
+              </div>
+              <p>Fecha : 2025-20-25 9:48</p>
+              </div>
+              <div className="contendorModal">
+                  <TablaDinamica columnas={columnas} datos={datos}></TablaDinamica>
+              </div>
+              <p>Total a Pagar: <strong>$ 180.000 COP</strong></p>
+              <div className="contenedorBotones">
+                  <button className="botonListoModal">Finalizar</button>
+                  <button className="botonCerrarModal" onClick={CerrarModal}>Cancelar</button>
+              </div>
+              </>
+            }
             </Modal>
         </div>
     )

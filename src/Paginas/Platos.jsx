@@ -1,15 +1,46 @@
 import CategoriasPlato from "../componentes/CategoriasPlato";
 import Buscador from "../componentes/Buscador";
 import "../Css/PlatosTarjetas.css"
+import { useEffect,useState } from "react";
 
 export default function Platos() {
+  const [categorias, setCategorias] = useState([]);
+  const [platos, setPlatos] = useState([]);
+  
+  useEffect(() => {
+    // Llamamos ambos endpoints en paralelo
+    Promise.all([
+      fetch("http://localhost:8080/Categorias").then((res) => res.json()),
+      fetch("http://localhost:8080/Platos").then((res) => res.json()),
+    ])
+      .then(([CategoriasData, PlatosData]) => {
+        setCategorias(CategoriasData);
+        setPlatos(PlatosData);
+      })
+      .catch((err) => console.error("Error al cargar datos:", err))
+      .finally();
+  }, []);
+
+  const CategoriasConPlatos = categorias.map((categoria) => ({
+    ...categoria,
+    platos: platos.filter((p) => p.id_categoria === categoria.id_categoria),
+  }));
   return (
     <section>
         <div className="encabezado">
-        <h1>Mesas</h1>
+        <h1>Platos</h1>
         </div>
         <Buscador></Buscador>
-        <CategoriasPlato/>
+        <div className="contenedorCategorias">
+          {CategoriasConPlatos.map((categoria) => (
+                  <CategoriasPlato
+                    key={categoria.id_categoria}
+                    nombre={categoria.tipo_categoria}
+                    platos={categoria.platos}
+                    ingredientes={true}
+                  />
+          ))}
+        </div>
     </section>
   );
 }

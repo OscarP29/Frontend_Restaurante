@@ -1,7 +1,29 @@
 import "../Css/Encabezado.css"
 import Sala from "../componentes/Sala";
+import { useEffect, useState} from "react";
 
 export default function Mesas() {
+  const [salas, setSalas] = useState([]);
+  const [mesas, setMesas] = useState([]);
+
+  useEffect(() => {
+    // Llamamos ambos endpoints en paralelo
+    Promise.all([
+      fetch("http://localhost:8080/Salas").then((res) => res.json()),
+      fetch("http://localhost:8080/Mesas").then((res) => res.json()),
+    ])
+      .then(([salasData, mesasData]) => {
+        setSalas(salasData);
+        setMesas(mesasData);
+      })
+      .catch((err) => console.error("Error al cargar datos:", err))
+      .finally();
+  }, []);
+
+  const salasConMesas = salas.map((sala) => ({
+    ...sala,
+    mesas: mesas.filter((m) => m.id_sala === sala.id_sala),
+  }));
 
   return (
     <section>
@@ -22,7 +44,13 @@ export default function Mesas() {
           </div>
         </div>
       </div>
-      <Sala></Sala>
+      {salasConMesas.map((sala) => (
+        <Sala
+          key={sala.id_sala}
+          nombre={sala.nombre_sala}
+          mesas={sala.mesas}
+        />
+      ))}
     </section>
   );
 }

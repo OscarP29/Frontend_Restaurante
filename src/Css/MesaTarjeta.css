@@ -92,7 +92,16 @@
 .encabezadoModal{
     display: flex;
     gap: 3px;
+    justify-content: space-between;
+    align-items: center;
+    border-Bottom: 1px solid #e5e7eb;
+    padding-Bottom: 0.5rem;
+    margin-bottom: 1rem;
     & div{
+        display: flex;
+        gap: 10px;
+    }
+    & .divDecoracion{
         width: 6px;
         background-color: #007000;
         border-radius: 8px;
@@ -100,6 +109,32 @@
     & h3{
         margin: 0;
         font-size: 20px;
+    }
+    & p{
+        margin: 0 40px;
+    }
+}
+.encabezadoModalUno{
+    display: flex;
+    gap: 3px;
+    align-items: center;
+    border-Bottom: 1px solid #e5e7eb;
+    padding-Bottom: 0.5rem;
+    margin-bottom: 1rem;
+    & div{
+        display: flex;
+    }
+    & .divDecoracion{
+        width: 6px;
+        background-color: #007000;
+        border-radius: 8px;
+    }
+    & h3{
+        margin: 0;
+        font-size: 20px;
+    }
+    & p{
+        margin: 0 40px;
     }
 }
 .navegadorModal{
@@ -132,6 +167,9 @@
         background-color: #007000;
         animation: animacionLi 0.3s both ease-in-out;
     }
+}
+.liNoSelecionado{
+    opacity: 0.7;
 }
 @keyframes animacionLi {
     from{
@@ -180,6 +218,13 @@
 }
 .contendorModal{
     animation: animacionContenedor 0.2s both ease-in-out;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    & .contenedorTabla{
+        height: 350px;
+    }
 }
 @keyframes animacionContenedor {
     from{

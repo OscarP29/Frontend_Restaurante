@@ -55,7 +55,7 @@ export default function Ventas(){
         },
         {
             icon: <span className="material-symbols-outlined text-gray-600">print</span>,
-            handlerName: "AbrirModal", className: "botonImprimir"
+            handlerName: "  ", className: "botonImprimir"
         }
     ]
     return(
