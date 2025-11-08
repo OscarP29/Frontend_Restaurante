@@ -20,7 +20,12 @@
     background-color: #009900;
   }
 }
-
+.nombreMensaje{
+    text-align: center;
+    color: #888;
+    font-size: 1.1rem;
+    margin-top: 2rem;
+}
 
 .contenedorAtender{
     padding: 0 1rem;
@@ -45,6 +50,7 @@
 .contenedorAtender-platos-nombre{
     margin: 0;
     font-size: 18px;
+    color: #222;
 }
 .contenedorAtender-platos-desc{
     margin: 0;
@@ -113,4 +119,12 @@
     border-radius: 8px;
     border: 1px solid black;
     padding-left: 5px;
+}
+.contenedorBotonesAdminTarjeta{
+    display: flex;
+    gap: 10px;
+    & button{
+        cursor: pointer;
+
+    }
 }

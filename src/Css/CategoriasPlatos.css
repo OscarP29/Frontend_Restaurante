@@ -4,7 +4,6 @@
 .contenedorCategoria{
     display: flex;
     gap: 5px;
-    margin-bottom: 20px;
     margin-left: 1rem;
 }
 .contenedorCategoria div{
@@ -22,4 +21,33 @@
     flex-direction: column;
     gap: 10px;
 
+}
+.contendedorEncabezadoCategoria{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.contenedorBotonesAdmin{
+    display: flex;
+    gap: 10px;
+    margin-right: 1rem;
+    & button{
+        cursor: pointer;
+
+    }
+}
+.botonEditar{
+    background-color:#3182CE;
+    color: white;
+    border-radius: 16px;
+    border: 2px solid #2B6CB0;
+    outline: none;
+}
+.botonEliminar{
+    background-color: #E53E3E;
+    color: white;
+    border-radius: 16px;
+    border: 2px solid #C53030;
+    outline: none;
 }

@@ -1,0 +1,141 @@
+.navegadorModal{
+    margin: 1rem 0 1.5rem;
+    & ul{
+        display: flex;
+        gap: 10px;
+        list-style: none;
+        padding: 0 0 0 1rem;
+        margin: 0;
+    }
+    & ul li{
+        text-decoration: none;
+        padding: 5px 20px;
+        border-radius: 8px;
+        transition: background-color ease 0.5s;
+        transition: color ease 0.5s;
+    }
+    & ul li:hover{
+        cursor: pointer;
+    }
+}
+.liSelecionadoMesa{
+    position: relative;
+    font-size: 16px;
+    background-color: #007000;
+    color: white;
+}
+.liNoSelecionadoMesa{
+    background-color: #d1d1d1;
+    color: black;
+}
+
+/* Estilos MesasCrear y Salas */
+.contenedorFormulario{
+    border: 1px solid #007000;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    background-color: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    animation: animacionContenedor 0.2s both ease-in-out;
+}
+@keyframes animacionContenedor {
+    from{
+        opacity: 0;
+        scale: 0.9;
+    }
+    to{
+        opacity: 1;
+        scale: 1;
+    }
+}
+.encabezadoMesas{
+    display: flex;
+    gap: 5px;
+    margin-bottom: 1rem;
+    margin-top: 10px;
+    & div{
+        width: 6px;
+        border-radius: 8px;
+        background-color: #007000;
+    }
+    & h3{
+        margin: 0;
+    }
+}
+.formMesas{
+    display: flex;
+    gap: 10px;
+    align-items: end;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+.NumeroMesa{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    & input{
+        padding: 0.5rem 0.8rem;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        outline: "none";
+        transition: border-color 0.2s;
+    }
+}
+.SalaMesa{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    & select{
+        padding: 0.5rem 0.8rem;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        outline: "none";
+        transition: border-color 0.2s;
+    }
+}
+.NombreSala{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    & input{
+        padding: 0.5rem 0.8rem;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        outline: "none";
+        transition: border-color 0.2s;
+    }
+}
+.botonCrear{
+    background-color: #007000;
+    border-radius: 16px;
+    border: none;
+    outline: none;
+    height: 35px;
+    padding: 8px 20px ;
+    color: white;
+    cursor: pointer;
+}
+/* Estilos MesasTabla */
+.contenedorTablasAdmin{
+    overflow: auto;
+    height: 450px;
+    padding-right: 10px;
+    &::-webkit-scrollbar {
+    width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+        margin-block: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #007000;
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: #009900;
+    }
+}

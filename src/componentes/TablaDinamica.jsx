@@ -2,15 +2,50 @@ import "../Css/TablaDinamica.css"
 import Modal from "../componentes/Modal"
 import { useState } from 'react';
 
-export default function TablaDinamica({columnas,datos,acciones}){
+export default function TablaDinamica({columnas,datos,acciones,funcionRecargar}){
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [fila, setFila] = useState(null)
-    const [tipoModal, setModal] = useState()
+    const [tipoModal, setModal] = useState();
+    const [platosMesa, setPlatosMesa] = useState([])
+    const [pedidoMesa, setPedidoMesa] = useState([])
+    
+    const columnasPlato = [
+        {key: "nombre_plato", label: "Nombre"},
+        {key: "cant_plato", label: "Cantidad"},
+        {key: "precio", label: "Precio"},
+        {key: "total_plato", label: "Total", className: "Total"},
+    ]
 
     const AbrirModal = (filaSeleccionada) => {
       setModal("Ver")
       setIsModalOpen(true);
       setFila(filaSeleccionada)
+      console.log(filaSeleccionada)
+      var xd = true
+      if (xd) {
+            fetch(`http://localhost:8080/PlatosPedidoPendiente?id_pedido=${filaSeleccionada.id_pedido}`)
+            .then((res) => {
+                if (!res.ok) throw new Error(`Error HTTP: ${res.status}`);
+                return res.json();
+            })
+            .then((data) => setPlatosMesa(data))
+            .catch((err) => console.error("Error al cargar datos:", err));
+
+            fetch(`http://localhost:8080/PedidosMesa?id_pedido=${filaSeleccionada.id_pedido}`)
+            .then((res) => {
+            if (!res.ok) {
+                throw new Error(`Error HTTP: ${res.status}`);
+            }
+            
+            return res.json();
+            })
+            .then((data) => {
+            setPedidoMesa(data);
+            })
+            .catch((err) => {
+            console.error("Error al cargar datos:", err);
+            });
+        }
     }
     const CerrarModal = () => {
       setFila(null)
@@ -20,6 +55,31 @@ export default function TablaDinamica({columnas,datos,acciones}){
       setModal("Finalizar")
       setIsModalOpen(true);
       setFila(filaSeleccionada)
+      var xd = true
+      if (xd) {
+            fetch(`http://localhost:8080/PlatosPedidoPendiente?id_pedido=${filaSeleccionada.id_pedido}`)
+            .then((res) => {
+                if (!res.ok) throw new Error(`Error HTTP: ${res.status}`);
+                return res.json();
+            })
+            .then((data) => setPlatosMesa(data))
+            .catch((err) => console.error("Error al cargar datos:", err));
+
+            fetch(`http://localhost:8080/PedidosMesa?id_pedido=${filaSeleccionada.id_pedido}`)
+            .then((res) => {
+            if (!res.ok) {
+                throw new Error(`Error HTTP: ${res.status}`);
+            }
+            return res.json();
+            })
+            .then((data) => {
+            setPedidoMesa(data);
+            })
+            .catch((err) => {
+            console.error("Error al cargar datos:", err);
+            });
+        }
+        
     }
     const FuncionesBotones = {
       AbrirModal,   
@@ -27,13 +87,41 @@ export default function TablaDinamica({columnas,datos,acciones}){
       finalizar,
     };
     const ReferenciasFunciones = (accionDescriptor, row) => {
-    if (typeof accionDescriptor.onClick === "function") {
-      return accionDescriptor.onClick(row);
+      if (typeof accionDescriptor.onClick === "function") {
+        return accionDescriptor.onClick(row);
+      }
+      if (accionDescriptor.handlerName && FuncionesBotones[accionDescriptor.handlerName]) {
+        return FuncionesBotones[accionDescriptor.handlerName](row);
+      }
     }
-    if (accionDescriptor.handlerName && FuncionesBotones[accionDescriptor.handlerName]) {
-      return FuncionesBotones[accionDescriptor.handlerName](row);
-    }
-    }
+    const finalizarPedido = () => {
+      fetch(`http://localhost:8080/actulizarEstadoPedido?id_pedido=${pedidoMesa.id_pedido}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          estado: true
+        })
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Error HTTP: ${response.status}`);
+          }
+          return response.text(); // usa .text() si el backend no devuelve JSON
+        })
+        .then(data => {
+          console.log("Estado del pedido actualizado:", data);
+          alert("✅ Pedido finalizado correctamente.");
+          setIsModalOpen(false)
+          funcionRecargar()
+        })
+        .catch(error => {
+          console.error("Error al actualizar pedido:", error);
+          alert("❌ Ocurrió un error al finalizar el pedido. Intenta nuevamente.");
+        });
+  };
+
     return(
 
         <div className="contenedorTabla">
@@ -75,30 +163,92 @@ export default function TablaDinamica({columnas,datos,acciones}){
             </table>
             <Modal abierto={isModalOpen} cerrado={CerrarModal}>
               {tipoModal === "Ver" && fila ? (
-              <ul>
-                {Object.entries(fila).map(([clave, valor]) => (
-                  <li key={clave}>
-                    <strong>{clave}: </strong>
-                    {valor}
-                  </li>
-                ))}
-              </ul>
+                <>
+              <div className="encabezadoModal">
+              <div>
+                  <div className="divDecoracion"></div>
+                  <h3>Mesa {pedidoMesa.mesa}</h3>
+              </div>
+              </div>
+              <div className="informacionPedido">
+                <h3 className="detalleTitulo">Detalle del Pedido</h3>
+                <div className="contenedorInformacionPedido">
+                  <ul>
+                    <p>ID Pedido: <strong>{pedidoMesa.id_pedido}</strong></p>
+                    <p>Fecha: <strong>{pedidoMesa.fecha}</strong></p>
+                    <p>Sala: <strong>{pedidoMesa.sala}</strong></p>
+                  </ul>
+                  <ul>
+                    <p>Estado: <strong>{pedidoMesa.estado_pedido ? "Pendiente": "Completado"}</strong></p>
+                    <p>Mesa: <strong>{pedidoMesa.mesa}</strong></p>
+                    <p>Total: <strong> $ {pedidoMesa.total} COP</strong></p>
+                  </ul>
+                </div>
+              </div>
+              <h3 className="informacionPlatosPedido">Platos del Pedido</h3>
+                <div className="contenedorTablaDetalle">
+                    <table className="tabla">
+                      <thead>
+                          <tr>
+                              {columnasPlato.map((col) => (
+                        <th key={col.key}>{col.label}</th>
+                      ))}
+                              </tr>
+                          </thead>
+                          <tbody>
+                          {platosMesa.map((row, idx) => (
+                      <tr key={idx}>
+                        {columnasPlato.map((col) => (
+                          <td key={col.key}>
+                              <p className={col.className}>
+                              {row[col.key]}</p>
+                              </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                  </table>
+
+                </div>
+              </>
             ) : (null)}
             {tipoModal === "Finalizar" && 
               <>
               <div className="encabezadoModal">
               <div>
                   <div className="divDecoracion"></div>
-                  <h3>Mesa 1</h3>
+                  <h3>Mesa {pedidoMesa.mesa}</h3>
               </div>
-              <p>Fecha : 2025-20-25 9:48</p>
+              <p>Fecha : <strong>{pedidoMesa.fecha}</strong></p>
               </div>
               <div className="contendorModal">
-                  <TablaDinamica columnas={columnas} datos={datos}></TablaDinamica>
+                  <div className="contenedorTablaDetalle">
+                    <table className="tabla">
+                      <thead>
+                          <tr>
+                              {columnasPlato.map((col) => (
+                        <th key={col.key}>{col.label}</th>
+                      ))}
+                              </tr>
+                          </thead>
+                          <tbody>
+                          {platosMesa.map((row, idx) => (
+                      <tr key={idx}>
+                        {columnasPlato.map((col) => (
+                          <td key={col.key}>
+                              <p className={col.className}>
+                              {row[col.key]}</p>
+                              </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                  </table>
+                </div>
               </div>
-              <p>Total a Pagar: <strong>$ 180.000 COP</strong></p>
+              <p>Total a Pagar: <strong>$ {pedidoMesa.total} COP</strong></p>
               <div className="contenedorBotones">
-                  <button className="botonListoModal">Finalizar</button>
+                  <button className="botonListoModal" onClick={finalizarPedido}>Finalizar</button>
                   <button className="botonCerrarModal" onClick={CerrarModal}>Cancelar</button>
               </div>
               </>

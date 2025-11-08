@@ -1,13 +1,14 @@
-import "../Css/Encabezado.css"
-import Sala from "../componentes/Sala";
+import "../../Css/Encabezado.css"
+import Sala from "../../componentes/Sala";
 import { useEffect, useState} from "react";
 
 export default function Mesas() {
   const [salas, setSalas] = useState([]);
   const [mesas, setMesas] = useState([]);
+  const [ocupadas, setOcupadas] = useState(0);
+  const [libres, setLibres] = useState(0);
 
-  useEffect(() => {
-    // Llamamos ambos endpoints en paralelo
+  const obtenerMesas = () =>{
     Promise.all([
       fetch("http://localhost:8080/Salas").then((res) => res.json()),
       fetch("http://localhost:8080/Mesas").then((res) => res.json()),
@@ -15,9 +16,15 @@ export default function Mesas() {
       .then(([salasData, mesasData]) => {
         setSalas(salasData);
         setMesas(mesasData);
+        setOcupadas(mesasData.filter(m => m.estado_mesa).length);
+        setLibres(mesasData.filter(m => !m.estado_mesa).length);
+
       })
       .catch((err) => console.error("Error al cargar datos:", err))
       .finally();
+  }
+  useEffect(() => {
+    obtenerMesas()
   }, []);
 
   const salasConMesas = salas.map((sala) => ({
@@ -33,13 +40,13 @@ export default function Mesas() {
           <div className="contenedorLibre">
             <div className="indicadorLibre"></div>
             <div className="mesasLibres">
-              <p className="textoLibre">Libres: <strong>2</strong></p>
+              <p className="textoLibre">Libres: <strong>{libres}</strong></p>
             </div>
           </div>
           <div className="contenedorOcupado">
             <div className="indicadorOcupado"></div>
               <div className="mesasOcupadas">
-              <p className="textoOcupado">Ocupadas: <strong>1</strong></p>
+              <p className="textoOcupado">Ocupadas: <strong>{ocupadas}</strong></p>
             </div>
           </div>
         </div>
@@ -49,6 +56,8 @@ export default function Mesas() {
           key={sala.id_sala}
           nombre={sala.nombre_sala}
           mesas={sala.mesas}
+          idsala={sala.id_sala}
+          recargar={obtenerMesas}
         />
       ))}
     </section>

@@ -1,6 +1,6 @@
 import MesaTarjeta from "./MesaTarjeta";
 import "../Css/Sala.css"
-export default function Sala({nombre, mesas}) {
+export default function Sala({nombre, mesas,idsala,recargar}) {
   return (
     <section className="sala">
       <div className="contenedorSala">
@@ -14,6 +14,8 @@ export default function Sala({nombre, mesas}) {
               key={m.id_mesa}
               numero={m.numero_mesa}
               estado={m.estado_mesa}
+              idsala={idsala}
+              recargar={recargar}
             />
           ))
         ) : (
