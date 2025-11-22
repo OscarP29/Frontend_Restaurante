@@ -10,7 +10,7 @@ export default function Mesas(){
             <div className="encabezado">
                 <h1>Mesas</h1>
             </div>
-            <nav className="navegadorModal">
+            <nav className="navegadorModalAdmin">
                 <ul>
                     <li className={`${section === "Crear" ? "liSelecionadoMesa" : "liNoSelecionadoMesa"}`} onClick={() => setSection("Crear")}>Crear</li>
                     <li className={`${section === "Tabla" ? "liSelecionadoMesa" : "liNoSelecionadoMesa"}`} onClick={() => setSection("Tabla")}>Tablas</li>

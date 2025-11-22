@@ -23,7 +23,7 @@ export default function MesaTarjeta({numero,estado, idsala, recargar}) {
     const AbrirModal = () => {
         setModal(true);
         if (estado) {
-            fetch(`http://localhost:8080/PlatosPedidoPendiente?id_pedido=${numero}`)
+            fetch(`http://localhost:8080/PlatosPedidoMesaID?id_mesa=${numero}`)
             .then((res) => {
                 if (!res.ok) throw new Error(`Error HTTP: ${res.status}`);
                 return res.json();
@@ -31,7 +31,7 @@ export default function MesaTarjeta({numero,estado, idsala, recargar}) {
             .then((data) => setPlatosMesa(data))
             .catch((err) => console.error("Error al cargar datos:", err));
 
-            fetch(`http://localhost:8080/PedidosMesa?id_pedido=${estado}&estado=${estado}`)
+            fetch(`http://localhost:8080/PedidosMesaID?id_mesa=${numero}`)
             .then((res) => {
             if (!res.ok) {
                 throw new Error(`Error HTTP: ${res.status}`);
@@ -84,9 +84,6 @@ export default function MesaTarjeta({numero,estado, idsala, recargar}) {
         });
 
         if (!res.ok) throw new Error(`Error HTTP: ${res.status}`);
-
-        const data = await res.json();
-        console.log("Pedido guardado:", data);
 
         alert("Pedido enviado correctamente ✅");
         sessionStorage.removeItem("platosSeleccionados");

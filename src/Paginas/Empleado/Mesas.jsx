@@ -1,4 +1,5 @@
 import "../../Css/Encabezado.css"
+import "../../Css/Empleado/Mesas.css"
 import Sala from "../../componentes/Sala";
 import { useEffect, useState} from "react";
 
@@ -51,6 +52,7 @@ export default function Mesas() {
           </div>
         </div>
       </div>
+      <div className="contenedorSalasMesas">
       {salasConMesas.map((sala) => (
         <Sala
           key={sala.id_sala}
@@ -60,6 +62,7 @@ export default function Mesas() {
           recargar={obtenerMesas}
         />
       ))}
+      </div>
     </section>
   );
 }

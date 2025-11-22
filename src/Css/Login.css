@@ -1,0 +1,132 @@
+.contenedor-principal {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1c1632 0%, #2d2447 100%);
+}
+
+.contenedor-login {
+  background: #f5f5f5;
+  border-radius: 24px;
+  padding: 48px 40px;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.encabezado {
+  text-align: center;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: none;
+  border: none;
+  background-color: #f5f5f5;
+
+  & .titulo{
+    font-size: 36px;
+  }
+}
+
+.encabezado .material-symbols-outlined {
+  font-size: 64px;
+  color: #007000;
+  margin-bottom: 16px;
+}
+
+.titulo {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1c1632;
+  margin-bottom: 8px;
+}
+
+.subtitulo {
+  font-size: 16px;
+  font-weight: 400;
+  color: #6b6b6b;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.grupo-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.grupo-input .material-symbols-outlined {
+  position: absolute;
+  left: 16px;
+  font-size: 24px;
+  color: #007000;
+  pointer-events: none;
+}
+
+.campo-texto {
+  width: 100%;
+  padding: 16px 16px 16px 52px;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  background: white;
+  color: #1c1632;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.campo-texto:focus {
+  border-color: #007000;
+}
+
+.campo-texto::placeholder {
+  color: #999;
+}
+
+.boton-iniciar {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #007000 0%, #005500 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0, 112, 0, 0.3);
+}
+
+.boton-iniciar:hover {
+  transform: translateY(-2px);
+}
+
+.boton-iniciar:active {
+  transform: translateY(0);
+}
+
+.text-gray-600 {
+  color: #6b6b6b;
+}
+
+@media (max-width: 480px) {
+  .contenedor-login {
+    padding: 32px 24px;
+  }
+
+  .encabezado .material-symbols-outlined {
+    font-size: 48px;
+  }
+
+  .titulo {
+    font-size: 28px;
+  }
+}

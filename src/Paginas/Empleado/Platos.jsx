@@ -7,6 +7,7 @@ export default function Platos() {
   const [categorias, setCategorias] = useState([]);
   const [platos, setPlatos] = useState([]);
   const [busqueda, setBusqueda] = useState("")
+
   
   useEffect(() => {
     Promise.all([
@@ -26,15 +27,16 @@ export default function Platos() {
   );
 
 
-  const CategoriasConPlatos = categorias
-    .map((categoria) => ({
-      ...categoria,
-      platos: platosFiltrados.filter(
-        (p) => p.id_categoria === categoria.id_categoria
-      ),
-    }))
-    .filter((categoria) => categoria.platos.length > 0);
-
+ const CategoriasConPlatos = categorias
+  .map((categoria) => ({
+    ...categoria,
+    platos: platosFiltrados.filter(
+      (p) => p.id_categoria === categoria.id_categoria
+    ),
+  }))
+  .filter((categoria) =>
+    busqueda === "" ? true : categoria.platos.length > 0
+  );
   return (
     <section>
         <div className="encabezado">

@@ -22,7 +22,17 @@
     width: 90%;
     animation: animacion 0.3s ease both;
 }
-
+.modalContenidoEditarAdmin {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    max-width: 200px;
+    height: 240px;
+    width: 90%;
+    animation: animacion 0.3s ease both;
+}
 @keyframes animacion {
     from {
         opacity: 0;

@@ -1,4 +1,4 @@
-import TablaDinamica from "../TablaDinamica"
+import TablaDinamica from "../../componentes/Admin/TablaDinamicaAdmin";
 import { useState,useEffect } from "react";
 export default function MesasTabla(){
     const [salas, setSalas] = useState([]);
@@ -32,14 +32,24 @@ export default function MesasTabla(){
         {key: "id_sala", label: "id"},
         {key: "nombre_sala", label: "Nombre"},
     ]
-    const acciones = [
+    const accionesMesa = [
         {
             icon: <span className="material-symbols-outlined text-gray-600">edit</span>,
             handlerName: "EditarMesa", className: "botonVer"
         },
         {
             icon: <span className="material-symbols-outlined text-gray-600">delete</span>,
-            handlerName: "eliminarMesa", className: "botonFinalizar"
+            handlerName: "EliminarMesa", className: "botonFinalizar"
+        }
+    ]
+    const accionesSala = [
+        {
+            icon: <span className="material-symbols-outlined text-gray-600">edit</span>,
+            handlerName: "EditarSala", className: "botonVer"
+        },
+        {
+            icon: <span className="material-symbols-outlined text-gray-600">delete</span>,
+            handlerName: "EliminarSala", className: "botonFinalizar"
         }
     ]
     return(
@@ -48,12 +58,12 @@ export default function MesasTabla(){
                 <div></div>
                 <h3>Tabla Mesas</h3>
             </div>
-            <TablaDinamica columnas={columnasMesa} acciones={acciones} datos={mesas}></TablaDinamica>
+            <TablaDinamica columnas={columnasMesa} acciones={accionesMesa} datos={mesas} funcionRecargar={obtenerMesas}></TablaDinamica>
             <div className="encabezadoMesas">
                 <div></div>
                 <h3>Tabla Salas</h3>
             </div>
-            <TablaDinamica columnas={columnasSala} acciones={acciones} datos={salas}></TablaDinamica>
+            <TablaDinamica columnas={columnasSala} acciones={accionesSala} datos={salas} funcionRecargar={obtenerMesas}></TablaDinamica>
         </section>
     )
 }

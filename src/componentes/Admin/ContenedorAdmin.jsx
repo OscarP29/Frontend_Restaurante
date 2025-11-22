@@ -1,7 +1,7 @@
 import Mesas from "../../Paginas/Admin/Mesas"
 import Platos from "../../Paginas/Admin/Platos"
-import Pedidos from "../../Paginas/Empleado/Pedidos"
-import Ventas from "../../Paginas/Empleado/Ventas"
+import Pedidos from "../../Paginas/Admin/Pedidos"
+import Ventas from "../../Paginas/Admin/Ventas"
 import "../../Css/Contenedor.css"
 
 export default function ContenedorAdmin({ section }) {

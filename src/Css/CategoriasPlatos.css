@@ -38,16 +38,75 @@
     }
 }
 .botonEditar{
-    background-color:#3182CE;
-    color: white;
+    position: relative;
+    height: 40px;
+    background-color: white;
+    color: #000070;
+    border: 2px solid #000070;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 16px;
-    border: 2px solid #2B6CB0;
-    outline: none;
+    transition: background-color 0.3s ease;
+    &:hover{
+        background-color: #000070;
+        color: white;
+        cursor: pointer;
+    }
+    &:hover::after{
+        position: absolute;
+        content: "Editar";
+        background-color: #000070;
+    
+        padding: 5px 10px;
+        border-radius: 10px;
+        animation: 0.2s both ease-in-out aparecer;
+    }
 }
+
 .botonEliminar{
-    background-color: #E53E3E;
+    height: 40px;
+  position: relative;
+  background-color: white;
+  color: #700000;
+  border: 2px solid #700000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  transition: background-color 0.3s ease;
+  &:hover{
+    background-color: #700000;
     color: white;
-    border-radius: 16px;
-    border: 2px solid #C53030;
-    outline: none;
+    cursor: pointer;
+  }
+  &:hover::after{
+    position: absolute;
+    content: "Eliminar";
+    background-color: #700000;
+   
+    padding: 5px 10px;
+    border-radius: 10px;
+    animation: 0.2s both ease-in-out aparecer;
+  }
+}
+
+/* Estilos Modal Editar Categoria */
+.formEditarCategoria{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    & .formNombreCategoria{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        margin-bottom: 20px;
+        & input{
+            width: 90%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    }
 }
