@@ -1,6 +1,7 @@
 import "../Css/TablaDinamica.css"
 import Modal from "../componentes/Modal"
 import { useState } from 'react';
+import  {generarFactura} from "../ReportesPdf/Factura.js"
 
 export default function TablaDinamica({columnas,datos,acciones,funcionRecargar}){
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -8,6 +9,8 @@ export default function TablaDinamica({columnas,datos,acciones,funcionRecargar})
     const [tipoModal, setModal] = useState();
     const [platosMesa, setPlatosMesa] = useState([])
     const [pedidoMesa, setPedidoMesa] = useState([])
+    const [pedidoFactura, setPedidoFactura] = useState([])
+    const [pedidoMesaFactura, setPedidoMesaFactura] = useState([])
     
     const columnasPlato = [
         {key: "nombre_plato", label: "Nombre"},
@@ -15,7 +18,21 @@ export default function TablaDinamica({columnas,datos,acciones,funcionRecargar})
         {key: "precio", label: "Precio"},
         {key: "total_plato", label: "Total", className: "Total"},
     ]
+    const generarFacturaPedido = async (filaSeleccionada) => {
+        try {
+          const res1 = await fetch(`http://localhost:8080/PlatosPedidoPendiente?id_pedido=${filaSeleccionada.id_pedido}`);
+          const platos = await res1.json();
 
+          const res2 = await fetch(`http://localhost:8080/PedidosMesa?id_pedido=${filaSeleccionada.id_pedido}`);
+          const pedido = await res2.json();
+          setPedidoFactura(platos);
+          setPedidoMesaFactura(pedido);
+          generarFactura(pedidoMesaFactura, pedidoFactura, pedidoMesaFactura.total);
+
+        } catch (err) {
+          console.error("Error al generar factura:", err);
+        }
+    }
     const AbrirModal = (filaSeleccionada) => {
       setModal("Ver")
       setIsModalOpen(true);
@@ -85,6 +102,7 @@ export default function TablaDinamica({columnas,datos,acciones,funcionRecargar})
       AbrirModal,   
       CerrarModal,
       finalizar,
+      generarFacturaPedido
     };
     const ReferenciasFunciones = (accionDescriptor, row) => {
       if (typeof accionDescriptor.onClick === "function") {
@@ -96,7 +114,7 @@ export default function TablaDinamica({columnas,datos,acciones,funcionRecargar})
     }
     const finalizarPedido = () => {
       fetch(`http://localhost:8080/actulizarEstadoPedido?id_pedido=${pedidoMesa.id_pedido}`, {
-        method: "POST",
+        method: "PATCH",
         headers: {
           "Content-Type": "application/json"
         },

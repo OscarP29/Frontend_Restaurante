@@ -54,10 +54,6 @@ export default function Pedidos(){
     })
     const acciones = [
         {
-            icon: <span className="material-symbols-outlined text-gray-600">edit</span>,
-            handlerName: "AbrirModal", className: "botonEditar"
-        },
-        {
             icon: <span className="material-symbols-outlined text-gray-600">delete</span>,
             handlerName: "finalizar", className: "botonEliminar"
         }

@@ -15,7 +15,7 @@
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
 }
 
-.encabezado {
+.encabezadoLogin {
   text-align: center;
   margin-bottom: 40px;
   display: flex;
@@ -30,7 +30,7 @@
   }
 }
 
-.encabezado .material-symbols-outlined {
+.encabezadoLogin .iconos {
   font-size: 64px;
   color: #007000;
   margin-bottom: 16px;
@@ -61,7 +61,7 @@
   align-items: center;
 }
 
-.grupo-input .material-symbols-outlined {
+.grupo-input .iconos {
   position: absolute;
   left: 16px;
   font-size: 24px;
@@ -113,7 +113,7 @@
   transform: translateY(0);
 }
 
-.text-gray-600 {
+.iconos {
   color: #6b6b6b;
 }
 
@@ -122,7 +122,7 @@
     padding: 32px 24px;
   }
 
-  .encabezado .material-symbols-outlined {
+  .encabezadoLogin .iconos {
     font-size: 48px;
   }
 

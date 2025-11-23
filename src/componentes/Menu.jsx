@@ -1,13 +1,16 @@
 import { useState } from "react";
 import "../Css/Menu.css"
 import usuarioImg from "../assets/usuario.png"
+import { useNavigate } from "react-router-dom";
 function Menu({selecionado, enSelecion}) {
   const [menu,setmenu] = useState(false);
-
+  const navigate = useNavigate();
   const MenuAccion = () => {
       setmenu(!menu)
   }
-
+  const salir = () => {
+      navigate("/login/");
+  }
   return (
     <aside className={`contenedor-menu-${menu ? "abierto": "cerrado"}`}>
       <h2 className="contenedor-menu-titulo">R</h2>
@@ -42,7 +45,7 @@ function Menu({selecionado, enSelecion}) {
             </li>
         </ul>
         <div className="contenedorBotonSalir">
-          <button className={`contenedor-menu-opciones-boton-${menu ? "abierto": "cerrado"}`}>
+          <button className={`contenedor-menu-opciones-boton-${menu ? "abierto": "cerrado"}`} onClick={salir}>
             <span className="material-symbols-outlined">exit_to_app</span>
             <span className="contenedor-menu-opciones-boton-span">Salir</span>
             <span className="contenedor-menu-opciones-boton-info">Salir</span>
